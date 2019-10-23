@@ -60,7 +60,7 @@ class DiscussionCreated
         $discussion = $event->discussion;
 
         $notify = User::query()
-            ->where('users.id', '!=', $discussion->start_user_id)
+            ->where('users.id', '!=', $discussion->user_id)
             ->where('preferences', 'regexp', new Expression('\'"notify_discussionCreated_[a-z]+":true\''))
             ->get();
 
