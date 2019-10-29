@@ -65,8 +65,7 @@ class DiscussionCreated
             ->get();
 
         $notify = $notify->filter(function (User $recipient) use ($discussion) {
-            return $recipient->can('subscribeDiscussionCreated') &&
-                $recipient->can('viewDiscussions', $discussion);
+            return $recipient->can('subscribeDiscussionCreated');
         });
 
         $this->notifications->sync(
